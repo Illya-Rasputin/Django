@@ -1,0 +1,31 @@
+{% extends "layout.html" %}
+
+{% block content %}
+<div class="games-container">
+        {% for game in games %}
+            <div class="card">
+                <a href="{% url 'game_detail' game.id %}" class="game-card-link">
+                    <img
+                    src="{{ game.image_url }}"
+                    alt="{{ game.name }}"
+                    class="game-poster"
+                    >
+
+                    <div class="game-info">
+                        <h2>{{ game.name }}</h2>
+
+                        <p class="developer">
+                        {{ game.developer }}
+                        </p>
+
+                    <div class="rating">
+                    {{ game.rating }} / 10
+                    </div>
+                </a>
+        
+            </div>
+        {% empty %}
+            <p>No games available.</p>
+        {% endfor %}
+    </div>
+{% endblock %}

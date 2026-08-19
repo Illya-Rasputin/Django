@@ -1,0 +1,50 @@
+[
+  {
+    "model": "games_app.game",
+    "pk": 1,
+    "fields": {
+      "name": "The Witcher 3",
+      "developer": "CD Projekt Red",
+      "description": "An open-world action RPG set in a dark fantasy world.",
+      "release_date": "2015-05-19",
+      "rating": 9.5,
+      "image_url": "https://placehold.co/600x900?text=The+Witcher+3"
+    }
+  },
+  {
+    "model": "games_app.game",
+    "pk": 2,
+    "fields": {
+      "name": "Minecraft",
+      "developer": "Mojang Studios",
+      "description": "A sandbox game where players can build, explore, and survive in procedurally generated worlds.",
+      "release_date": "2011-11-18",
+      "rating": 9.0,
+      "image_url": "https://placehold.co/600x900?text=Minecraft"
+    }
+  },
+  {
+    "model": "games_app.game",
+    "pk": 3,
+    "fields": {
+      "name": "Grand Theft Auto V",
+      "developer": "Rockstar Games",
+      "description": "An open-world action-adventure game set in the fictional city of Los Santos.",
+      "release_date": "2013-09-17",
+      "rating": 9.3,
+      "image_url": "https://placehold.co/600x900?text=Grand+Theft+Auto+V"
+    }
+  },
+  {
+    "model": "games_app.game",
+    "pk": 4,
+    "fields": {
+      "name": "Red Dead Redemption 2",
+      "developer": "Rockstar Games",
+      "description": "An open-world western adventure following Arthur Morgan and the Van der Linde gang.",
+      "release_date": "2018-10-26",
+      "rating": 9.8,
+      "image_url": "https://placehold.co/600x900?text=Red+Dead+Redemption+2"
+    }
+  }
+]

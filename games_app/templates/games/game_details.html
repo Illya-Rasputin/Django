@@ -1,0 +1,17 @@
+{% extends "layout.html" %} 
+{% block title %}{{ game.name }}{% endblock title %}
+
+{% block content %}
+{% if game %}
+<h1>{{ game.name }}</h1>
+<img src="{{ game.image_url }}" alt="{{ game.name }}" class="img-fluid">
+<p><strong>Developer:</strong> {{ game.developer }}</p>
+<p><strong>Description:</strong> {{ game.description }}</p>
+<p><strong>Release Date:</strong> {{ game.release_date }}</p>
+<p><strong>Rating:</strong> {{ game.rating }}</p>
+{% else %}
+<div class="alert alert-warning">
+	Game not found. <a href="{% url 'game_list' %}">Return to catalog</a>.
+</div>
+{% endif %}
+{% endblock %}
