@@ -1,10 +1,13 @@
 {% extends "layout.html" %}
 
 {% block content %}
+<div class="d-flex justify-content-between align-items-center mb-4">
+    <h1>Games</h1>
+</div>
 <div class="games-container">
         {% for game in games %}
             <div class="card">
-                <a href="{% url 'game_detail' game.id %}" class="game-card-link">
+                <a href="{% url 'game_details' game.id %}" class="game-card-link">
                     <img
                     src="{{ game.image_url }}"
                     alt="{{ game.name }}"

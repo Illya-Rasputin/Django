@@ -1,0 +1,14 @@
+{% extends "layout.html" %}
+
+{% block title %}{% if game %}Edit game{% else %}Add game{% endif %}{% endblock %}
+
+{% block content %}
+<h1>{% if game %}Edit game{% else %}Add game{% endif %}</h1>
+
+<form method="post" novalidate>
+    {% csrf_token %}
+    {{ form.as_p }}
+    <button type="submit" class="btn btn-primary">{% if game %}Save changes{% else %}Add game{% endif %}</button>
+    <a href="{% if game %}{% url 'game_details' game.id %}{% else %}{% url 'game_list' %}{% endif %}" class="btn btn-secondary">Cancel</a>
+</form>
+{% endblock %}

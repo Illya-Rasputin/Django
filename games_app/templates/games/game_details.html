@@ -9,9 +9,13 @@
 <p><strong>Description:</strong> {{ game.description }}</p>
 <p><strong>Release Date:</strong> {{ game.release_date }}</p>
 <p><strong>Rating:</strong> {{ game.rating }}</p>
+
 {% else %}
 <div class="alert alert-warning">
 	Game not found. <a href="{% url 'game_list' %}">Return to catalog</a>.
 </div>
+{% endif %}
+{% if user.is_superuser %}
+	<a href="{% url 'game_edit' game.id %}" class="btn btn-primary">Edit game</a>
 {% endif %}
 {% endblock %}
