@@ -10,6 +10,15 @@
 <p><strong>Release Date:</strong> {{ game.release_date }}</p>
 <p><strong>Rating:</strong> {{ game.rating }}</p>
 
+<form method="post" action="{% if in_cart %}{% url 'remove_from_cart' game.id %}{% else %}{% url 'add_to_cart' game.id %}{% endif %}">
+    {% csrf_token %}
+    {% if in_cart %}
+    <button type="submit" class="btn btn-danger">Remove from Cart</button>
+    {% else %}
+    <button type="submit" class="btn btn-success">Add to Cart</button>
+    {% endif %}
+</form>
+
 {% else %}
 <div class="alert alert-warning">
 	Game not found. <a href="{% url 'game_list' %}">Return to catalog</a>.

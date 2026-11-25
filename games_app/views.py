@@ -18,7 +18,41 @@ def game_list(request):
 
 def game_details(request, game_id):
     game = get_object_or_404(Game, id=game_id)
-    return render(request, "games/game_details.html", {"game": game})
+    cart = request.session.get("cart", [])
+    return render(request, "games/game_details.html", {
+        "game": game,
+        "in_cart": str(game_id) in cart,
+    })
+
+
+def add_to_cart(request, game_id):
+    if request.method == "POST":
+        cart = request.session.get("cart", [])
+        game_id = str(game_id)
+        if game_id not in cart:
+            cart.append(game_id)
+            request.session["cart"] = cart
+            request.session.modified = True
+    return redirect("game_details", game_id=game_id)
+
+
+def remove_from_cart(request, game_id):
+    if request.method == "POST":
+        cart = request.session.get("cart", [])
+        game_id = str(game_id)
+        if game_id in cart:
+            cart.remove(game_id)
+            request.session["cart"] = cart
+            request.session.modified = True
+    return redirect("cart")
+
+
+def cart(request):
+    cart_ids = request.session.get("cart", [])
+    games = list(Game.objects.filter(id__in=[int(game_id) for game_id in cart_ids]))
+    games_by_id = {str(game.id): game for game in games}
+    ordered_games = [games_by_id[game_id] for game_id in cart_ids if game_id in games_by_id]
+    return render(request, "games/cart.html", {"cart_games": ordered_games})
 
 
 @superuser_required

@@ -67,8 +67,8 @@
                         {% endif %}
                     </li>
                     <li class="nav-item">
-                        <a href="#" class="nav-link">
-                            🛒 Cart (0)
+                        <a href="{% url 'cart' %}" class="nav-link">
+                            🛒 Cart ({{ request.session.cart|length|default:'0' }})
                         </a>
                     </li>
 
